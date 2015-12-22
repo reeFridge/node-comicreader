@@ -15,6 +15,7 @@ Arch.prototype.open = function (file, cb) {
 	try {
 		var rf = new rarfile.RarFile(that.findPath + file + '.cbr');
 	} catch (err) {
+		console.error(err);
 		rf = new rarfile.RarFile(that.findPath + file + '.rar');
 	}
 	rf.cache = {};
