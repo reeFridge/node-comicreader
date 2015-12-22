@@ -21,7 +21,6 @@ function handler(req, res) {
 	if(req.url == '/favicon.ico') {
 		res.writeHead(200, 'Content-Type', 'image/png');
 		res.writeHead('Content-Length', ico.length);
-		res.statusCode = 200;
 		res.end(ico);
 		return;
 	}
@@ -29,7 +28,6 @@ function handler(req, res) {
 	if(req.url == '/load.gif') {
 		res.writeHead(200, 'Content-Type', 'image/gif');
 		res.writeHead('Content-Length', load.length);
-		res.statusCode = 200;
 		res.end(load);
 		return;
 	}
@@ -37,7 +35,6 @@ function handler(req, res) {
 	if(req.url == '/client/index.js') {
 		res.writeHead(200, 'Content-Type', 'text/javascript');
 		res.writeHead('Content-Length', clientScript.length);
-		res.statusCode = 200;
 		res.end(clientScript);
 		return;
 	}
@@ -45,7 +42,6 @@ function handler(req, res) {
 	if(req.url == '/client/home.js') {
 		res.writeHead(200, 'Content-Type', 'text/javascript');
 		res.writeHead('Content-Length', homeScript.length);
-		res.statusCode = 200;
 		res.end(homeScript);
 		return;
 	}
@@ -85,8 +81,7 @@ function handler(req, res) {
 	}
 
 	if (book) {
-		res.writeHead('Content-Type', 'text/html');
-		res.statusCode = 200;
+		res.writeHead(200, 'Content-Type', 'text/html');
 		res.end(jade.renderFile('./views/index.jade', { title: book }));
 		arc = arch.findByName(book);
 		if (!arc) 
@@ -100,7 +95,6 @@ function handler(req, res) {
 	res.writeHead(301, {Location: '/home'});
 	res.end();*/
 	res.writeHead(200, 'Content-Type', 'text/html');
-	res.statusCode = 200;
 	fs.readdir('./archives', function (err, files) {
 		if (err){ 
 			console.error(err);
