@@ -21,6 +21,7 @@ Arch.prototype.open = function (file, cb) {
 	var id = that.opened.push({ rf: rf });
 	var obj = that.opened[id - 1];
 	rf.on('ready', function () {
+		console.log('Archive ready');
 		obj.rf.names.sort();
 		obj.rf.ready = true;
 		cb(obj.rf);
