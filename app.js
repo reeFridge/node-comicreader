@@ -9,7 +9,7 @@ var io = require('./socket');
 //archive.addFile(0, './archives/' + process.argv[2] + '.rar');
 
 //Starting server
-server.listen(3000, function (err) {
+server.listen( { host: 'node-comicreader.herokuapp.com' } , function (err) {
 	if (err) throw err;
 	console.log('Server listening on 3000 port');
 });
