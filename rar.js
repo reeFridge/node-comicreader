@@ -11,6 +11,7 @@ module.exports = Arch;
 
 Arch.prototype.open = function (file, cb) {
 	var that = this;
+	console.log('Start open archive' + file);
 	try {
 		var rf = new rarfile.RarFile(that.findPath + file + '.cbr');
 	} catch (err) {

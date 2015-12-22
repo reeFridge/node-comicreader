@@ -1,12 +1,14 @@
 var pBtn = document.getElementById('p');
 var nBtn = document.getElementById('n');
-var socket = io.connect('https://node-comicreader.herokuapp.com/room');
+var host = window.location.host;
+var socket = io.connect(host + '/room');
+
 var image = document.getElementById('image');
 var book = window.location.href.split('/');
 
 socket.on('connect', function () {
 	socket.emit('joinRoom', book[book.length - 1]);
-	image.setAttribute('src', '/' + book[book.length - 1] + '/0');
+	//image.setAttribute('src', '/' + book[book.length - 1] + '/0');
 });
 
 socket.on('who', function () {

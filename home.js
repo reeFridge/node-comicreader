@@ -1,4 +1,6 @@
-var socket = io.connect('https://node-comicreader.herokuapp.com/home');
+var host = window.location.host;
+var socket = io.connect(host + '/home');
+
 
 socket.on('connect', function () {
 	console.log('Connection established');

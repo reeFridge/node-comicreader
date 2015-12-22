@@ -7,7 +7,7 @@ var server = require('./server');
 var io = require('./socket');
 
 //archive.addFile(0, './archives/' + process.argv[2] + '.rar');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 //Starting server
 server.listen(port, function (err) {
 	if (err) throw err;
