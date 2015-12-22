@@ -19,7 +19,7 @@ module.exports = server;
 
 function handler(req, res) {
 	if(req.url == '/favicon.ico') {
-		res.statusCode = 200;
+		res.writeHead(200);
 		res.writeHead('Content-Type', 'image/png');
 		res.writeHead('Content-Length', ico.length);
 		res.end(ico);
@@ -27,7 +27,7 @@ function handler(req, res) {
 	}
 
 	if(req.url == '/load.gif') {
-		res.statusCode = 200;
+		res.writeHead(200);
 		res.writeHead('Content-Type', 'image/gif');
 		res.writeHead('Content-Length', load.length);
 		res.end(load);
@@ -35,7 +35,7 @@ function handler(req, res) {
 	}
 
 	if(req.url == '/client/index.js') {
-		res.statusCode = 200;
+		res.writeHead(200);
 		res.writeHead('Content-Type', 'text/javascript');
 		res.writeHead('Content-Length', clientScript.length);
 		res.end(clientScript);
@@ -43,7 +43,7 @@ function handler(req, res) {
 	}
 
 	if(req.url == '/client/home.js') {
-		res.statusCode = 200;
+		res.writeHead(200);
 		res.writeHead('Content-Type', 'text/javascript');
 		res.writeHead('Content-Length', homeScript.length);
 		res.end(homeScript);
@@ -85,7 +85,7 @@ function handler(req, res) {
 	}
 
 	if (book) {
-		res.statusCode = 200;
+		res.writeHead(200);
 		res.writeHead('Content-Type', 'text/html');
 		res.end(jade.renderFile('./views/index.jade', { title: book }));
 		arc = arch.findByName(book);
@@ -99,7 +99,7 @@ function handler(req, res) {
 	/*res.writeHead('Content-Type', 'text/html');
 	res.writeHead(301, {Location: '/home'});
 	res.end();*/
-	res.statusCode = 200;
+	res.writeHead(200);
 	res.writeHead('Content-Type', 'text/html');
 	fs.readdir('./archives', function (err, files) {
 		if (err){ 
