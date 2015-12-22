@@ -19,33 +19,33 @@ module.exports = server;
 
 function handler(req, res) {
 	if(req.url == '/favicon.ico') {
-		res.writeHead(200);
-		res.writeHead('Content-Type', 'image/png');
-		res.writeHead('Content-Length', ico.length);
+
+		res.writeHead(200, 'Content-Type', 'image/png');
+		res.writeHead(200, 'Content-Length', ico.length);
 		res.end(ico);
 		return;
 	}
 
 	if(req.url == '/load.gif') {
-		res.writeHead(200);
-		res.writeHead('Content-Type', 'image/gif');
-		res.writeHead('Content-Length', load.length);
+
+		res.writeHead(200, 'Content-Type', 'image/gif');
+		res.writeHead(200, 'Content-Length', load.length);
 		res.end(load);
 		return;
 	}
 
 	if(req.url == '/client/index.js') {
-		res.writeHead(200);
-		res.writeHead('Content-Type', 'text/javascript');
-		res.writeHead('Content-Length', clientScript.length);
+
+		res.writeHead(200, 'Content-Type', 'text/javascript');
+		res.writeHead(200, 'Content-Length', clientScript.length);
 		res.end(clientScript);
 		return;
 	}
 
 	if(req.url == '/client/home.js') {
-		res.writeHead(200);
-		res.writeHead('Content-Type', 'text/javascript');
-		res.writeHead('Content-Length', homeScript.length);
+
+		res.writeHead(200, 'Content-Type', 'text/javascript');
+		res.writeHead(200, 'Content-Length', homeScript.length);
 		res.end(homeScript);
 		return;
 	}
@@ -85,8 +85,8 @@ function handler(req, res) {
 	}
 
 	if (book) {
-		res.writeHead(200);
-		res.writeHead('Content-Type', 'text/html');
+
+		res.writeHead(200, 'Content-Type', 'text/html');
 		res.end(jade.renderFile('./views/index.jade', { title: book }));
 		arc = arch.findByName(book);
 		if (!arc) 
@@ -99,8 +99,7 @@ function handler(req, res) {
 	/*res.writeHead('Content-Type', 'text/html');
 	res.writeHead(301, {Location: '/home'});
 	res.end();*/
-	res.writeHead(200);
-	res.writeHead('Content-Type', 'text/html');
+	res.writeHead(200, 'Content-Type', 'text/html');
 	fs.readdir('./archives', function (err, files) {
 		if (err){ 
 			console.error(err);
@@ -117,8 +116,7 @@ function handler(req, res) {
 function sendPage(page, arc, res) {
 
 	if(arc.names[page] || arc.cache[page]){
-		res.writeHead('Content-Type', 'image/jpg');	
-		res.statusCode = 200;
+		res.writeHead(200, 'Content-Type', 'image/jpg');	
 
 		if (!arc.cache[page]) {
 			arc.pipe(arc.names[page], res);
@@ -135,8 +133,7 @@ function sendPage(page, arc, res) {
 		}
 
 	} else {
-		res.writeHead('Content-Type', 'text/plain');
-		res.statusCode = 404;
+		res.writeHead(404, 'Content-Type', 'text/plain');
 		res.end('Sorry but this page not found!\n(404)');
 	}
 }
