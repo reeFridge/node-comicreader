@@ -5,10 +5,10 @@ var fs = require('fs');
 var jade = require('jade');
 
 //Static files
-var load = fs.readFileSync('./load.gif');
-var clientScript = fs.readFileSync('./index.js');
-var homeScript = fs.readFileSync('./home.js');
-var ico = fs.readFileSync('./favicon.ico');
+var load = fs.readFileSync('./static/img/load.gif');
+var clientScript = fs.readFileSync('./static/client/index.js');
+var homeScript = fs.readFileSync('./static/client/home.js');
+var ico = fs.readFileSync('./static/img/favicon.ico');
 var Arch = require('./rar');
 var arch = new Arch({ findPath: './archives/' });
 var io = require('./socket');
