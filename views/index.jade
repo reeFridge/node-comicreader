@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title= title
+		script(src='/socket.io/socket.io.js')
+	body
+		div#content
+			img#image(src='/load.gif')
+		div#ui
+			button#p Prev
+			button#n Next
+		script(src='/client/index.js')

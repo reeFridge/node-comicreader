@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title Comic book reader
+		script(src='/socket.io/socket.io.js')
+	body
+		div Available comics:
+			each file in files
+				li
+					a(href= file)= file
+					span(id= file)
+		script(src='/client/home.js')
