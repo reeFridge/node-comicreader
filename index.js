@@ -1,6 +1,6 @@
 var pBtn = document.getElementById('p');
 var nBtn = document.getElementById('n');
-var socket = io.connect('http://localhost:3000/room');
+var socket = io.connect('https://node-comicreader.herokuapp.com/room');
 var image = document.getElementById('image');
 var book = window.location.href.split('/');
 
